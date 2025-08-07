@@ -8,6 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" Version="9.4.0" />
+        <PackageReference Include="Aspire.Hosting.SqlServer" Version="9.4.0" />
+        <PackageReference Include="Aspire.Hosting.Testing" Version="9.4.0" />
         <PackageReference Include="coverlet.collector" Version="6.0.2"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="3.1.3">
@@ -15,6 +18,11 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="xunit.v3" Version="3.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ParallelTests.Core\ParallelTests.Core.csproj" />
+      <ProjectReference Include="..\ParallelTests.Tests.DbHost\ParallelTests.Tests.DbHost.csproj" />
     </ItemGroup>
 
 </Project>

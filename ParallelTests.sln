@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelTests.Core", "Paral
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelTests.Tests", "ParallelTests.Tests\ParallelTests.Tests.csproj", "{9D1B6AF2-70AD-4D73-A2C8-B99B0DBD19E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelTests.Tests.DbHost", "ParallelTests.Tests.DbHost\ParallelTests.Tests.DbHost.csproj", "{4D280417-E0DB-4281-8F30-21D626DF3D10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{9D1B6AF2-70AD-4D73-A2C8-B99B0DBD19E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D1B6AF2-70AD-4D73-A2C8-B99B0DBD19E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D1B6AF2-70AD-4D73-A2C8-B99B0DBD19E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D280417-E0DB-4281-8F30-21D626DF3D10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D280417-E0DB-4281-8F30-21D626DF3D10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D280417-E0DB-4281-8F30-21D626DF3D10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D280417-E0DB-4281-8F30-21D626DF3D10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
