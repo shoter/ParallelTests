@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelTests.Core", "ParallelTests.Core\ParallelTests.Core.csproj", "{E7CAECE0-AFB5-495B-BA52-6F908FAE11C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelTests.Tests", "ParallelTests.Tests\ParallelTests.Tests.csproj", "{9D1B6AF2-70AD-4D73-A2C8-B99B0DBD19E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{E7CAECE0-AFB5-495B-BA52-6F908FAE11C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7CAECE0-AFB5-495B-BA52-6F908FAE11C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7CAECE0-AFB5-495B-BA52-6F908FAE11C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D1B6AF2-70AD-4D73-A2C8-B99B0DBD19E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D1B6AF2-70AD-4D73-A2C8-B99B0DBD19E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D1B6AF2-70AD-4D73-A2C8-B99B0DBD19E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D1B6AF2-70AD-4D73-A2C8-B99B0DBD19E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
