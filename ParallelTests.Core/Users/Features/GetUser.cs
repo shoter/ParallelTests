@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ParallelRepositoryTests.Repository.Entities;
 
-namespace ParallelRepositoryTests.Repository.Users;
+namespace ParallelRepositoryTests.Repository.Users.Features;
 
 public class GetUser(PrtDbContext db)
 {

@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-using ParallelRepositoryTests.Repository.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
+using ParallelRepositoryTests.Repository.Users;
 
 namespace ParallelRepositoryTests.Repository.Groups;
 
+[Table("Group")]
 public class GroupEntity
 {
     [Key]

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace ParallelRepositoryTests.Repository.Groups;
+namespace ParallelRepositoryTests.Repository.Groups.Features;
 
 public class GetGroup(PrtDbContext db)
 {

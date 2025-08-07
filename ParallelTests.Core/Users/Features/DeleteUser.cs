@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ParallelRepositoryTests.Repository.Users;
+namespace ParallelRepositoryTests.Repository.Users.Features;
 
 public class DeleteUser(PrtDbContext db)
 {

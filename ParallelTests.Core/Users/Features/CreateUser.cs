@@ -1,6 +1,6 @@
-namespace ParallelRepositoryTests.Repository.Groups;
+﻿namespace ParallelRepositoryTests.Repository.Users.Features;
 
-public class CreateGroup(PrtDbContext db)
+public class CreateUser(PrtDbContext db)
 {
     public record Input(
         Guid Id,
@@ -8,12 +8,12 @@ public class CreateGroup(PrtDbContext db)
 
     public async Task Execute(Input input, CancellationToken cancellationToken = default)
     {
-        var group = new GroupEntity()
+        var user = new UserEntity()
         {
             Id = input.Id,
             Name = input.Name
         };
-        await db.AddAsync(group, cancellationToken);
+        await db.AddAsync(user, cancellationToken);
         await db.SaveChangesAsync(cancellationToken);
     }
 }
