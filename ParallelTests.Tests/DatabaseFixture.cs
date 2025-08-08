@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using Aspire.Hosting;
 using Aspire.Hosting.Testing;
 using Microsoft.EntityFrameworkCore;
 using ParallelRepositoryTests.Repository;
