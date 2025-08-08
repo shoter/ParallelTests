@@ -2,8 +2,11 @@
 using Aspire.Hosting.Testing;
 using Microsoft.EntityFrameworkCore;
 using ParallelRepositoryTests.Repository;
+using ParallelTests.Tests;
 using ParallelTests.Tests.DbHost;
 using Xunit.Sdk;
+
+[assembly: AssemblyFixture(typeof(DatabaseFixture))]
 
 namespace ParallelTests.Tests;
 
@@ -15,11 +18,13 @@ public class DatabaseFixture
 
     public DatabaseFixture()
     {
+        // https://github.com/dotnet/aspire/issues/6891
         var builder = DistributedApplicationTestingBuilder
-            .CreateAsync<Projects.ParallelTests_Tests_DbHost>()
+            .CreateAsync<Projects.ParallelTests_Tests_DbHost>(["DcpPublisher:ResourceNameSuffix="])
             .Result;
 
-        app = builder.BuildAsync()
+        app = builder
+            .BuildAsync()
             .Result;
         app.StartAsync()
             .Wait();
@@ -35,13 +40,18 @@ public class DatabaseFixture
                 .Options;
 
             using var db = new PrtDbContext(options);
+            while (!db.Database.CanConnect())
+            {
+                Thread.Sleep(1000);
+            }
+
             db.Database.Migrate();
 
             databases.Enqueue(dbInfo);
         }
     }
 
-    private async Task<DatabaseResource> GetDatabase(CancellationToken ct)
+    internal async Task<DatabaseResource> GetDatabase(CancellationToken ct = default)
     {
         await semaphoreSlim.WaitAsync(ct);
         if (!databases.TryDequeue(out var dbInfo))
