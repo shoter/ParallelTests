@@ -21,7 +21,7 @@ public class DatabaseFixture
     {
         // https://github.com/dotnet/aspire/issues/6891
         var builder = DistributedApplicationTestingBuilder
-            .CreateAsync<Projects.ParallelTests_Tests_DbHost>(["DcpPublisher:ResourceNameSuffix="])
+            .CreateAsync<Projects.ParallelTests_Tests_DbHost>()
             .Result;
 
         app = builder
