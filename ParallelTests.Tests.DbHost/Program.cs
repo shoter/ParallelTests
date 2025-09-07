@@ -4,9 +4,14 @@ using ParallelTests.Tests.DbHost;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
+var password = builder.AddParameter(
+    "password",
+    secret: false,
+    value: "IsItAPasswordProblem0!");
+
 // SQL Server with a database named "appdb"
-var server = builder.AddSqlServer("sqldb")
-    .WithContainerName("ParallelTestsSqlServer")
+var server = builder.AddSqlServer("sqldb", password)
+    .WithContainerName("ParallelTestsSQL")
     .WithLifetime(ContainerLifetime.Persistent);
 
 for (int i = 0; i < Const.SqlServerCount; ++i)
