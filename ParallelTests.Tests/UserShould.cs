@@ -11,7 +11,6 @@ public class UserShould(DatabaseFixture fixture)
     {
         var db = await fixture.GetDatabase();
         int a = 123;
-
     }
 
 }

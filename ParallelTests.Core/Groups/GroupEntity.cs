@@ -11,6 +11,4 @@ public class GroupEntity
     public Guid Id { get; set; }
     [MaxLength(100)]
     public string Name { get; set; } = string.Empty;
-
-    public ICollection<UserEntity> Users { get; set; } = new List<UserEntity>();
 }

@@ -28,17 +28,11 @@ namespace ParallelRepositoryTests.Repository.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    GroupEntityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_User_Group_GroupEntityId",
-                        column: x => x.GroupEntityId,
-                        principalTable: "Group",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -66,11 +60,6 @@ namespace ParallelRepositoryTests.Repository.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_GroupEntityId",
-                table: "User",
-                column: "GroupEntityId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UserInGroup_GroupId_UserId",
                 table: "UserInGroup",
                 columns: new[] { "GroupId", "UserId" });
@@ -83,10 +72,10 @@ namespace ParallelRepositoryTests.Repository.Migrations
                 name: "UserInGroup");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Group");
 
             migrationBuilder.DropTable(
-                name: "Group");
+                name: "User");
         }
     }
 }

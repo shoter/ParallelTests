@@ -26,5 +26,13 @@ public class UserInGroupEntity : IEntityTypeConfiguration<UserInGroupEntity>
             x.GroupId,
             x.UserId
         });
+
+        builder.HasOne(x => x.User)
+            .WithMany()
+            .HasForeignKey(x => x.UserId);
+
+        builder.HasOne(x => x.Group)
+            .WithMany()
+            .HasForeignKey(x => x.GroupId);
     }
 }

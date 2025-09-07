@@ -20,7 +20,7 @@ public class PrtDbContext(DbContextOptions<PrtDbContext> options) : DbContext(op
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(
-            this.GetType()
+                typeof(UserEntity)
                 .Assembly);
     }
 }

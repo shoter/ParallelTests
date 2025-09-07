@@ -12,7 +12,7 @@ using ParallelRepositoryTests.Repository;
 namespace ParallelRepositoryTests.Repository.Migrations
 {
     [DbContext(typeof(PrtDbContext))]
-    [Migration("20250807234213_Init")]
+    [Migration("20250907221551_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -47,17 +47,12 @@ namespace ParallelRepositoryTests.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("GroupEntityId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GroupEntityId");
 
                     b.ToTable("User");
                 });
@@ -77,13 +72,6 @@ namespace ParallelRepositoryTests.Repository.Migrations
                     b.ToTable("UserInGroup");
                 });
 
-            modelBuilder.Entity("ParallelRepositoryTests.Repository.Users.UserEntity", b =>
-                {
-                    b.HasOne("ParallelRepositoryTests.Repository.Groups.GroupEntity", null)
-                        .WithMany("Users")
-                        .HasForeignKey("GroupEntityId");
-                });
-
             modelBuilder.Entity("ParallelRepositoryTests.Repository.Users.UserInGroupEntity", b =>
                 {
                     b.HasOne("ParallelRepositoryTests.Repository.Groups.GroupEntity", "Group")
@@ -101,11 +89,6 @@ namespace ParallelRepositoryTests.Repository.Migrations
                     b.Navigation("Group");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ParallelRepositoryTests.Repository.Groups.GroupEntity", b =>
-                {
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

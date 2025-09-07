@@ -19,7 +19,6 @@ public class DatabaseFixture
 
     public DatabaseFixture()
     {
-        // https://github.com/dotnet/aspire/issues/6891
         var builder = DistributedApplicationTestingBuilder
             .CreateAsync<Projects.ParallelTests_Tests_DbHost>()
             .Result;
@@ -40,13 +39,13 @@ public class DatabaseFixture
                 .UseSqlServer(dbInfo.ConnectionString)
                 .Options;
 
-            using var db = new PrtDbContext(options);
+            using var db = new TestDbContext(options);
             while (!db.Database.CanConnect())
             {
                 Thread.Sleep(1000);
             }
 
-            db.Database.Migrate();
+            db.Database.EnsureCreated();
 
             databases.Enqueue(dbInfo);
         }
