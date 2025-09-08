@@ -31,7 +31,7 @@ public class DatabaseFixture
 
         for (int i = 0; i < Const.SqlServerCount; ++i)
         {
-            var dbInfo = new DatabaseInfo(
+            var dbInfo = new DatabaseInfo(i,
                 app.GetConnectionStringAsync($"testdb{i}")
                     .Result ?? throw new NullReferenceException("DB not found"));
 
@@ -59,23 +59,27 @@ public class DatabaseFixture
             throw new Exception("Should not happen - semaphore guards against that");
         }
 
-        return new(this, dbInfo.ConnectionString);
+        Console.WriteLine($"O {dbInfo.DbNumber} {databases.Count}");
+        return new(this, dbInfo);
     }
 
-    private void Release()
+    private void Release(DatabaseInfo dbInfo)
     {
+        databases.Enqueue(dbInfo);
         semaphoreSlim.Release();
     }
 
     internal class DatabaseResource(
         DatabaseFixture fixture,
-        string connectionString) : IDisposable
+        DatabaseInfo dbInfo) : IDisposable
     {
-        public string ConnectionString => connectionString;
+        public string ConnectionString => dbInfo.ConnectionString;
+
+        public int DbNumber => dbInfo.DbNumber;
 
         public void Dispose()
         {
-            fixture.Release();
+            fixture.Release(dbInfo);
         }
     }
 }

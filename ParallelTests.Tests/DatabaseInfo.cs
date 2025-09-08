@@ -1,3 +1,3 @@
 ﻿namespace ParallelTests.Tests;
 
-internal record DatabaseInfo(string ConnectionString);
+internal record DatabaseInfo(int DbNumber, string ConnectionString);
